@@ -1,8 +1,8 @@
 # DTA
 
-This repository contains an **independent Python implementation** of Dynamic Tensor Analysis (DTA), proposed by Jimeng Sun, Dacheng Tao, and Christos Faloutsos in [*Beyond Streams and Graphs: Dynamic Tensor Analysis* (KDD 2006)](https://doi.org/10.1145/1150402.1150445). It was developed as a baseline for the experimental evaluation of **MuTGN** and is **not** the original authors' software.
+This repository contains an independent Python implementation of Dynamic Tensor Analysis (DTA), proposed by Jimeng Sun, Dacheng Tao, and Christos Faloutsos in [*Beyond Streams and Graphs: Dynamic Tensor Analysis* (KDD 2006)](https://doi.org/10.1145/1150402.1150445). It was developed as a baseline for the experimental evaluation of **MuTGN** and is not the original authors' software.
 
-The implementation detects **window-level anomalies** in temporal graphs. A window corresponds to the interactions occurring within a contiguous time interval. Each window is represented by a sparse adjacency tensor. The code expects chronologically ordered windows, partitioned into training and test sets that preserve temporal order.
+The implementation detects window-level anomalies in temporal graphs. A window corresponds to the interactions occurring within a contiguous time interval. Each window is represented by a sparse adjacency tensor. The code expects chronologically ordered windows, partitioned into training and test sets that preserve temporal order.
 
 The present implementation uses DTA in the training set to incrementally learn low-rank projection matrices that capture the structure of the training tensors. It then applies the learned projections to the test windows, using reconstruction error as an anomaly score.
 
@@ -74,7 +74,7 @@ Example configuration files are provided in `train.config.example.yaml` and `tes
 
 ## Input and output
 
-The implementation expects separate directories of preprocessed training and test windows, specified through `paths.train_dir` and `paths.test_dir`, respectively. Each directory contains PyTorch `.pt` files named `window_*.pt`, which are loaded in **lexicographic filename order**. Filenames must therefore preserve chronological order, for example by using zero-padded indices.
+The implementation expects separate directories of preprocessed training and test windows, specified through `paths.train_dir` and `paths.test_dir`, respectively. Each directory contains PyTorch `.pt` files named `window_*.pt`, which are loaded in lexicographic filename order. Filenames must therefore preserve chronological order, for example by using zero-padded indices.
 
 Each file is loaded using torch.load() and must contain the window's sparse adjacency tensor under the key `A`, represented as a three-dimensional PyTorch sparse COO tensor. From this data structure the scripts gather the non-zero indices, their values, and the tensor shape. Tensor dimensions must be consistent across windows and compatible with the learned projections.
 
@@ -84,7 +84,7 @@ The creation of the `.pt` window files and the evaluation of anomaly scores are 
 
 ## Reproducible environment
 
-A reconstructed environment with **Python 3.15.2** and the versions pinned in [`requirements-reconstructed.txt`](requirements-reconstructed.txt) was validated by reproducing a MuTGN paper experiment in a container. The main dependencies are PyTorch `2.15.0`, NumPy `2.5.5`, SciPy `1.18.1`, and PyYAML `6.0.4`.
+A reconstructed environment with Python 3.15.2 and the versions pinned in [`requirements-reconstructed.txt`](requirements-reconstructed.txt) was validated by reproducing a MuTGN paper experiment in a container. The main dependencies are PyTorch `2.15.0`, NumPy `2.5.5`, SciPy `1.18.1`, and PyYAML `6.0.4`.
 
 From the repository root, build the container image using [Podman](https://podman.io/) (Docker can also be used):
 
