@@ -1,0 +1,4 @@
+paths:
+  test_dir: /data/test
+  model_factors: /models/learned_factors_8.pkl
+  score_file: /outputs/scores.pkl

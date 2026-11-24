@@ -1,0 +1,10 @@
+global:
+  val_ratio: 0.15
+  device: auto
+
+model:
+  rank: 8
+
+paths:
+  train_dir: /data/train
+  model_factors: /models/learned_factors_8.pkl
