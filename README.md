@@ -19,11 +19,7 @@ where $X_{(d)}$ denotes the mode-$d$ unfolding, and $U_d$ and $S_d$ contain the 
 At test time, the learned projection matrices remain fixed and are applied to each test window. Each window receives an anomaly score measuring how poorly it can be reconstructed from its low-rank approximation. The score corresponds to the squared Frobenius norm of the reconstruction error, normalized by the squared Frobenius norm of the original tensor. To avoid constructing the dense reconstruction $\hat X$, the implementation computes the reconstruction error using the equivalence:
 
 $$
-\boxed{
-\frac{\|X-\hat X\|_F^2}{\|X\|_F^2}
-=
-1-\frac{\|Y\|_F^2}{\|X\|_F^2}
-}
+\boxed{ \frac{\|X-\hat X\|_F^2}{\|X\|_F^2} = 1-\frac{\|Y\|_F^2}{\|X\|_F^2} }
 $$
 
 where $Y$ is the low-rank core tensor. This equivalence follows from the orthonormality of the projection matrices. The code adds a small constant to the denominator for numerical stability.
