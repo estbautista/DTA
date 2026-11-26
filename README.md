@@ -84,7 +84,7 @@ The creation of the `.pt` window files and the evaluation of anomaly scores are 
 
 ## Reproducible environment
 
-A reconstructed environment with Python 3.15.2 and the versions pinned in [`requirements-reconstructed.txt`](requirements-reconstructed.txt) was validated by reproducing a MuTGN paper experiment in a container. The main dependencies are PyTorch `2.15.0`, NumPy `2.5.5`, SciPy `1.18.1`, and PyYAML `6.0.4`.
+A reconstructed environment with Python 3.15.2 and the versions pinned in [`requirements-reconstructed.txt`](requirements-reconstructed.txt) was validated in a container. The main dependencies are PyTorch `2.15.0`, NumPy `2.5.5`, SciPy `1.18.1`, and PyYAML `6.0.4`.
 
 From the repository root, build the container image using [Podman](https://podman.io/) (Docker can also be used):
 
